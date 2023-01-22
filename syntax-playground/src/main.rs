@@ -1,8 +1,8 @@
 #![allow(unreachable_code)]
+mod try_format_print;
+mod try_loop;
 #[warn(unused_labels)]
 mod try_match;
-mod try_loop;
-mod try_format_print;
 use try_match::Color;
 fn main() {
     math();
@@ -34,6 +34,10 @@ fn main() {
     try_match::match_blinding();
     try_match::match_if_let();
     try_match::match_loop_let();
+    println!("sum is {}", sum(8, 9));
+    let val: u64 = 8;
+    increase(val, 10);
+    println!("val after increase() {}", val); // val unchange outside increase()
 }
 
 fn closures() {
@@ -63,6 +67,14 @@ fn math() {
 
     let remainder = 43 % 5;
     println!("remainder {}", remainder);
+}
+
+fn sum(a: u64, b: u64) -> u64 {
+    a + b // Note: ending without ;  -> same as return a + b;
+}
+fn increase(mut value: u64, increaseBy: u64) { // Note: mut for value
+    value+=increaseBy;
+    println!("increase to {}", value);
 }
 
 fn tup() {

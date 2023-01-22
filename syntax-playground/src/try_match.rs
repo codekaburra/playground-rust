@@ -35,9 +35,9 @@ pub fn match_tuple() {
     match triple {
         // Destructure the second and third elements
         (0, y, z) => println!("First is `0`, `y` is {:?}, and `z` is {:?}", y, z),
-        (1, ..)  => println!("First is `1` and the rest doesn't matter"),
+        (1, ..) => println!("First is `1` and the rest doesn't matter"),
         // `..` can be used to ignore the rest of the tuple
-        _      => println!("It doesn't matter what they are"),
+        _ => println!("It doesn't matter what they are"),
         // `_` means don't bind the value to a variable
     }
 }
@@ -49,8 +49,7 @@ pub fn match_array_slice() {
 
     match array {
         // Binds the second and the third elements to the respective variables
-        [0, second, third] =>
-            println!("array[0] = 0, array[1] = {}, array[2] = {}", second, third),
+        [0, second, third] => println!("array[0] = 0, array[1] = {}, array[2] = {}", second, third),
 
         // Single values can be ignored with _
         [1, _, third] => println!(
@@ -82,7 +81,6 @@ pub fn match_array_slice() {
     }
 }
 
-
 pub enum Color {
     // These 3 are specified solely by their name.
     Red,
@@ -96,28 +94,24 @@ pub enum Color {
     CMYK(u32, u32, u32, u32),
 }
 
-
-pub fn match_enum(color:Color) {
+pub fn match_enum(color: Color) {
     println!("--- match_enum() ---");
     // `allow` required to silence warnings because only
     // one variant is used.
     println!("What color is it?");
     // An `enum` can be destructured using a `match`.
     match color {
-        Color::Red   => println!("The color is Red!"),
-        Color::Blue  => println!("The color is Blue!"),
+        Color::Red => println!("The color is Red!"),
+        Color::Blue => println!("The color is Blue!"),
         Color::Green => println!("The color is Green!"),
-        Color::RGB(r, g, b) =>
-            println!("Red: {}, green: {}, and blue: {}!", r, g, b),
-        Color::HSV(h, s, v) =>
-            println!("Hue: {}, saturation: {}, value: {}!", h, s, v),
-        Color::HSL(h, s, l) =>
-            println!("Hue: {}, saturation: {}, lightness: {}!", h, s, l),
-        Color::CMY(c, m, y) =>
-            println!("Cyan: {}, magenta: {}, yellow: {}!", c, m, y),
-        Color::CMYK(c, m, y, k) =>
-            println!("Cyan: {}, magenta: {}, yellow: {}, key (black): {}!",
-                     c, m, y, k),
+        Color::RGB(r, g, b) => println!("Red: {}, green: {}, and blue: {}!", r, g, b),
+        Color::HSV(h, s, v) => println!("Hue: {}, saturation: {}, value: {}!", h, s, v),
+        Color::HSL(h, s, l) => println!("Hue: {}, saturation: {}, lightness: {}!", h, s, l),
+        Color::CMY(c, m, y) => println!("Cyan: {}, magenta: {}, yellow: {}!", c, m, y),
+        Color::CMYK(c, m, y, k) => println!(
+            "Cyan: {}, magenta: {}, yellow: {}, key (black): {}!",
+            c, m, y, k
+        ),
         // Don't need another arm because all variants have been examined
     }
 }
@@ -134,14 +128,14 @@ pub fn match_blinding() {
     println!("Tell me what type of person you are");
 
     match age() {
-        0             => println!("I haven't celebrated my first birthday yet"),
+        0 => println!("I haven't celebrated my first birthday yet"),
         // Could `match` 1 ..= 12 directly but then what age
         // would the child be? Instead, bind to `n` for the
         // sequence of 1 ..= 12. Now the age can be reported.
-        n @ 1  ..= 12 => println!("I'm a child of age {:?}", n),
-        n @ 13 ..= 19 => println!("I'm a teen of age {:?}", n),
+        n @ 1..=12 => println!("I'm a child of age {:?}", n),
+        n @ 13..=19 => println!("I'm a teen of age {:?}", n),
         // Nothing bound. Return the result.
-        n             => println!("I'm an old person of age {:?}", n),
+        n => println!("I'm an old person of age {:?}", n),
     }
 }
 // Our example enum
@@ -149,7 +143,7 @@ enum Foo {
     Bar,
     Baz,
     Qux(u32),
-    Sth(i32)
+    Sth(i32),
 }
 
 pub fn match_if_let() {
@@ -164,7 +158,6 @@ pub fn match_if_let() {
     if let Foo::Bar = a {
         println!("a is foobar");
     }
-
 
     // Variable b does not match Foo::Bar
     // So this will print nothing

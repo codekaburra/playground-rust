@@ -129,4 +129,3 @@ pub fn loop_iterator() {
 
     println!("names: {:?}", names);
 }
-
