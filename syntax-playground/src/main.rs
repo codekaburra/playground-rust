@@ -72,8 +72,9 @@ fn math() {
 fn sum(a: u64, b: u64) -> u64 {
     a + b // Note: ending without ;  -> same as return a + b;
 }
-fn increase(mut value: u64, increaseBy: u64) { // Note: mut for value
-    value+=increaseBy;
+fn increase(mut value: u64, increaseBy: u64) {
+    // Note: mut for value
+    value += increaseBy;
     println!("increase to {}", value);
 }
 

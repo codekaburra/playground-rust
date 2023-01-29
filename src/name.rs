@@ -11,6 +11,6 @@ fn main() {
     let name = env::args().skip(1).next();
     match name {
         Some(n) => println!("Hi there!{}", n),
-        None => panic!("didnt's receive any name ? ")
+        None => panic!("didnt's receive any name ? "),
     }
 }
