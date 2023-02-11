@@ -1,7 +1,7 @@
 use try_integration_test::sum;
 
 mod common;
-use common::{function_1,function_2};
+use common::{function_1, function_2};
 
 #[test]
 fn sum_test() {
