@@ -1,0 +1,11 @@
+[package]
+name = "pdf-testing"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+pdf={ git = "https://github.com/pdf-rs/pdf.git" }
+reqwest={ git = "https://github.com/seanmonstar/reqwest.git" }
+tokio = { version = "1", features = ["full"] }
